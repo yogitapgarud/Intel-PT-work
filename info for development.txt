@@ -1,1 +1,2 @@
 perf script --header-only    => provides cpuid info -- referenced in script/perf-get-opts.sh
+perf script --header-only | grep cpuid
