@@ -1,2 +1,15 @@
 perf script --header-only    => provides cpuid info -- referenced in script/perf-get-opts.sh
+script/perf-get-opts.sh  => sets --pevent options for ptdump and ptxed
 perf script --header-only | grep cpuid
+
+You can count no of CPUs
+
+cat /proc/cpuinfo | grep processor | wc -l
+Output :
+2
+
+To check the number of cores !
+cat /proc/cpuinfo | grep 'core id'
+
+nproc
+lscpu
