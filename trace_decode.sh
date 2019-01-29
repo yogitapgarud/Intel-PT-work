@@ -1,6 +1,6 @@
 #!/bin/sh
 
-~/libexec/perf-core/perf-with-kcore record pt_ls -e intel_pt// -- ls
+~/libexec/perf-core/perf-with-kcore record pt_ls -e intel_pt//k -- ls
 
 cd pt_ls
 sudo ../script/perf-read-aux.bash
