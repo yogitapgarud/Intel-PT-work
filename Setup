@@ -1,0 +1,6 @@
+Build PTXED
+Build Processor Trace with all options
+
+Install perf tool from sources with for kernel level trace:
+make -C <kernel source root directory>/tools/perf
+reference: "https://unix.stackexchange.com/questions/92957/how-can-i-compile-install-and-run-the-tools-inside-kernel-tools"
