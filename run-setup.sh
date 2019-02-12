@@ -1,5 +1,7 @@
 #!/bin/sh
 
+sudo apt-get install vim build-essential linux-tools-generic git cmake flex bison gawk
+
 git clone https://github.com/01org/processor-trace.git
 git clone https://github.com/intelxed/mbuild.git mbuild
 git clone https://github.com/intelxed/xed
