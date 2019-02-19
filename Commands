@@ -1,0 +1,3 @@
+
+# Remove every next occurence of same line
+awk '!seen[$0]++' filename
