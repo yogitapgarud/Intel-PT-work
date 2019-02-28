@@ -1,0 +1,7 @@
+
+make modules
+make modules_install
+#Above will create uname -r folder in /lib/modules and install modules in it
+
+sudo update-initramfs -c -k <2.6.32.59>
+sudo update-grub
