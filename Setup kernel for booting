@@ -5,3 +5,6 @@ make modules_install
 
 sudo update-initramfs -c -k <2.6.32.59>
 sudo update-grub
+
+#References
+https://wiki.debian.org/initramfs
