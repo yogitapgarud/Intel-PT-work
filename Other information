@@ -1,0 +1,4 @@
+sudo apt-get install perf-tools-unstable
+
+Getting syscall count
+sudo syscount
