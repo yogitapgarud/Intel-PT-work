@@ -1,0 +1,7 @@
+Ftrace:
+Linux has ftrace that can log function calls and tracepoint data for the kernel.
+
+#Tracing Linux kernel
+https://lwn.net/Articles/648154/
+
+https://raw.githubusercontent.com/torvalds/linux/master/tools/perf/Documentation/intel-pt.txt
