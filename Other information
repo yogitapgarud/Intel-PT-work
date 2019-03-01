@@ -1,4 +1,2 @@
-sudo apt-get install perf-tools-unstable
-
-Getting syscall count
-sudo syscount
+# Get all system calls in the running kernel
+sudo ls /usr/share/man/man2 | sed -e s/.2.gz//g | xargs man -s 2 -k  | sort | grep -v 'unimplemented system calls' > system_calls-current-kernel.txt
