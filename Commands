@@ -4,3 +4,6 @@ awk '!seen[$0]++' filename
 
 #Find non matching lines from both the files
 comm -3 <(sort try1.txt) <(sort try2.txt)
+
+#Allow seeing kernel symbols
+sudo sh -c " echo 0 > /proc/sys/kernel/kptr_restrict"
