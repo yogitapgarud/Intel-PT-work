@@ -7,3 +7,6 @@ comm -3 <(sort try1.txt) <(sort try2.txt)
 
 #Allow seeing kernel symbols
 sudo sh -c " echo 0 > /proc/sys/kernel/kptr_restrict"
+
+#Get strace commands in file
+strace -o <output filename> <workload>
