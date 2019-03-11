@@ -1,14 +1,16 @@
 
 import os
+import numpy as np
 from py2neo import Graph, Node, Relationship, NodeMatcher
 
-def create_call_graph(call_graph_dict):
+def create_call_graph(call_graph_dict=None):
     graph = Graph('bolt://localhost:7687', username="neo4j", password="yogita")
     #matcher = NodeMatcher(graph)
-    #graph.delete_all()
+    graph.delete_all()
 
     tx = graph.begin()
     #d = {"func1":["func3","func2","func5"], "func2":["func3"], "func3":["func4","func6"]}
+    call_graph_dict = np.load("dict_diagraph.npy").item()
 
     for k, v in call_graph_dict.iteritems():
         a = Node("Function", name=k)
@@ -62,10 +64,18 @@ def create_dictionary_from_diagraph(diagraph_file):
                 s = line[0].strip('"')
                 if s not in db_called:
                     db_called[s] = []
+    
+    np.save("dict_diagraph.npy", db_called)
+
+    """
+    with open("dict_diagraph.txt", "w+") as fdict:
+        for k, v in db_called.iteritems():
+            fdict.write(k+" : "+str(v)+"\n")
+    """
 
     return db_called
 
 path = os.getcwd()
 filename = "diagraph_defconfig-441.txt"
-call_graph_dict = create_dictionary_from_diagraph(os.path.join(path,filename))
-create_call_graph(call_graph_dict)
+#call_graph_dict = create_dictionary_from_diagraph(os.path.join(path,filename))
+create_call_graph()
