@@ -1,0 +1,70 @@
+write
+exit_group
+read
+mmap
+mprotect
+getcwd
+arch_prctl
+access
+munmap
+brk
+close
+open
+fstat
+execve
++------------+--------------+----------------+
+|   Symbol   | Strace Count | Intel PT Count |
++------------+--------------+----------------+
+|   write    |      1       |       1        |
+| exit_group |      1       |       1        |
+|    read    |      1       |       1        |
+|    mmap    |      8       |       8        |
+|  mprotect  |      4       |       4        |
+|   getcwd   |      1       |       1        |
+| arch_prctl |      1       |       1        |
+|   access   |      3       |       3        |
+|   munmap   |      1       |       1        |
+|    brk     |      3       |       3        |
+|   close    |      5       |       5        |
+|    open    |      3       |       3        |
+|   fstat    |      4       |       4        |
+|   execve   |      1       |       1        |
++------------+--------------+----------------+
+('execve', 'return_from_execve')
+('brk', 'sys_brk')
+('access', 'sys_access')
+('access', 'sys_access')
+('open', 'sys_open')
+('fstat', 'sys_newfstat')
+('mmap', 'sys_mmap')
+('close', 'sys_close')
+('access', 'sys_access')
+('open', 'sys_open')
+('read', 'sys_read')
+('fstat', 'sys_newfstat')
+('mmap', 'sys_mmap')
+('mmap', 'sys_mmap')
+('mprotect', 'sys_mprotect')
+('mmap', 'sys_mmap')
+('mmap', 'sys_mmap')
+('close', 'sys_close')
+('mmap', 'sys_mmap')
+('mmap', 'sys_mmap')
+('arch_prctl', 'sys_arch_prctl')
+('mprotect', 'sys_mprotect')
+('mprotect', 'sys_mprotect')
+('mprotect', 'sys_mprotect')
+('munmap', 'sys_munmap')
+('brk', 'sys_brk')
+('brk', 'sys_brk')
+('open', 'sys_open')
+('fstat', 'sys_newfstat')
+('mmap', 'sys_mmap')
+('close', 'sys_close')
+('getcwd', 'sys_getcwd')
+('fstat', 'sys_newfstat')
+('write', 'sys_write')
+('close', 'sys_close')
+('close', 'sys_close')
+('exit_group', 'sys_exit_group')
+('Count matched in sequence: ', 37, 37, [])

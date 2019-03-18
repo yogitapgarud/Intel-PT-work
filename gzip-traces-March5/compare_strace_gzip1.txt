@@ -1,0 +1,44 @@
+write
+exit_group
+rt_sigaction
+lseek
+read
+mmap
+mprotect
+arch_prctl
+fchown
+access
+munmap
+brk
+utimensat
+rt_sigprocmask
+close
+fchmod
+unlink
+open
+fstat
+execve
++----------------+--------------+----------------+
+|     Symbol     | Strace Count | Intel PT Count |
++----------------+--------------+----------------+
+|     write      |      33      |       33       |
+|   exit_group   |      1       |       1        |
+|  rt_sigaction  |      12      |       12       |
+|     lseek      |      1       |       1        |
+|      read      |      17      |       17       |
+|      mmap      |      7       |       7        |
+|    mprotect    |      4       |       4        |
+|   arch_prctl   |      1       |       1        |
+|     fchown     |      1       |       1        |
+|     access     |      3       |       3        |
+|     munmap     |      1       |       1        |
+|      brk       |      1       |       1        |
+|   utimensat    |      1       |       1        |
+| rt_sigprocmask |      4       |       4        |
+|     close      |      7       |       7        |
+|     fchmod     |      1       |       1        |
+|     unlink     |      1       |       1        |
+|      open      |      4       |       4        |
+|     fstat      |      3       |       3        |
+|     execve     |      1       |       1        |
++----------------+--------------+----------------+
