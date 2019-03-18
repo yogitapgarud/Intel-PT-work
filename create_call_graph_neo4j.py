@@ -37,6 +37,18 @@ def create_call_graph(call_graph_dict=None):
     #MATCH (n:Function) RETURN n 
     #alice, bob, carol = [result.one for result in tx.commit()]
 
+def search_node(node):
+    graph = Graph('bolt://localhost:7687', username="neo4j", password="yogita")
+    query = """
+    MATCH ((function:Function)-[:calls]->(called:Function))
+    WHERE called.name = {name}
+    RETURN function.name AS name, called.name as name1
+    """
+    data = graph.run(query, name=node)
+
+    for d in data:
+        print(d)
+
 def create_dictionary_from_diagraph(diagraph_file):
     db_called = {}
 
@@ -78,4 +90,6 @@ def create_dictionary_from_diagraph(diagraph_file):
 path = os.getcwd()
 filename = "diagraph_defconfig-441.txt"
 #call_graph_dict = create_dictionary_from_diagraph(os.path.join(path,filename))
-create_call_graph()
+#create_call_graph()
+
+search_node("jbd2_journal_get_write_access")

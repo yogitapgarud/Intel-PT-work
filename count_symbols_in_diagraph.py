@@ -151,7 +151,7 @@ def compare_subcalls_to_mapped_symbols(subcalls_file, mapped_ksyms):
         for line in fs:
             line = line.split()
             s1.add(line[0])
-            print(line[0])
+            #print(line[0])
 
     with open(mapped_ksyms, 'r') as fr:
         for line in fr:
@@ -160,22 +160,59 @@ def compare_subcalls_to_mapped_symbols(subcalls_file, mapped_ksyms):
 
         common = set.intersection(s1, s2)
 
-        with open("common_ls1.txt", 'w+') as fw:
+        with open("common_ls_ulimit16384.txt", 'w+') as fw:
             for c in common:
                 fw.write(c+"\n")
 
-    print(len(common))
+    inMappedSymsOnly = s2 - s1
+
+    with open("not_in_strace_ls_ulimit16384.txt", 'w+') as fn:
+        for item in inMappedSymsOnly:
+            fn.write(item+"\n")
+
+    inStraceOnly = s1 - s2
+
+    with open("not_in_strace_ls_ulimit16384.txt", 'w+') as fn:
+        for item in inMappedSymsOnly:
+            fn.write(item+"\n")
+
+    with open("not_in_mapped_syms_ls_ulimit16384.txt", 'w+') as fm:
+        for item in inStraceOnly:
+            fm.write(item+"\n")
+
+    print("Common in both:          ", len(common))
+    print("Only occuring in strace: ", len(inStraceOnly))
+    print("Total symbols in strace: ", len(s1))
+
+def compare_functions_not_present():
+    s1, s2 = set(), set()
+
+    with open("not_in_mapped_syms_ls_size512.txt", 'r') as fm:
+        for line in fm:
+            line = line.split()[0]
+            s1.add(line)
+
+    with open("not_in_mapped_syms_ls_size4096.txt", 'r') as fs:
+        for line in fs:
+            line = line.split()[0]
+            s2.add(line)
+
+    print("not common: ", len(s1-s2), len(s2-s1))
 
 path = os.getcwd()
 diagraph_file = "diagraph_defconfig-441.txt"
-dir_name = "new-ls-traces-4.4.11/"
-strace_file = os.path.join(path, dir_name+"strace_ls.txt")
-mapped_ksyms = os.path.join(path, dir_name+"mapped_addresses_ls2.out")
+dir_name = "ls-varied-buffer/"
+strace_file = os.path.join(path, dir_name+"strace_new_ls.txt")
+mapped_ksyms = os.path.join(path, dir_name+"mapped_addresses_ls_ulimit16384.out")
 
+"""
 count_symbols_in_diagraph(diagraph_file, mapped_ksyms)
 
 save_graph(diagraph_file)
 
-find_subcalls(strace_file, "subcalls_ls2.txt")
+find_subcalls(strace_file, "subcalls_ls_ulimit16384.txt")
+"""
+compare_subcalls_to_mapped_symbols("subcalls_ls_ulimit16384.txt", mapped_ksyms)
 
-compare_subcalls_to_mapped_symbols("subcalls_ls2.txt", mapped_ksyms)
+
+#compare_functions_not_present()

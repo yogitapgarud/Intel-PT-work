@@ -108,15 +108,16 @@ def get_symbol_kallsyms(kallsyms, file_expand_address, mapped_addresses):
 			line = line.split()
 			#print(line[0])
 			if line[0] in symbol_mapping:
+				#print(line[0])
 				fw.write(line[0]+" "+symbol_mapping[line[0]]+"\n")
 
 path = os.getcwd()
 #print(path)
-dir_name = "gzip-traces-March5/"
-filename = "gzip_pt3.out"
+#dir_name = "gzip-traces-March5/"
+#filename = "gzip_pt3.out"
 
-#dir_name = "new-ls-traces-4.4.11/"
-#filename = "ls_pt_trace3.out"
+dir_name = "ls-varied-buffer/"
+filename = "ls_ulimit16384.out"
 
 filepath_original = os.path.join(path, dir_name+filename)
 #print(filepath_original)
@@ -137,5 +138,5 @@ expand_intelpt(file_address, file_expand_address)
 
 #map_address_kallsyms(file_expand_address)
 
-mapped_addresses = os.path.join(path, dir_name+"mapped_addresses_gzip3.out")
+mapped_addresses = os.path.join(path, dir_name+"mapped_addresses_ls_ulimit16384.out")
 get_symbol_kallsyms("./kallsyms", file_expand_address, mapped_addresses)
