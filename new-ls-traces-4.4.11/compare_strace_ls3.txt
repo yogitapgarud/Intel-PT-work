@@ -1,0 +1,46 @@
+set_robust_list
+write
+set_tid_address
+getdents
+rt_sigaction
+read
+mmap
+mprotect
+arch_prctl
+statfs
+access
+ioctl
+munmap
+brk
+exit_group
+rt_sigprocmask
+close
+getrlimit
+open
+fstat
+execve
++-----------------+--------------+----------------+
+|      Symbol     | Strace Count | Intel PT Count |
++-----------------+--------------+----------------+
+| set_robust_list |      1       |       1        |
+|      write      |      31      |       30       |
+| set_tid_address |      1       |       1        |
+|     getdents    |      2       |       2        |
+|   rt_sigaction  |      2       |       2        |
+|       read      |      5       |       5        |
+|       mmap      |      19      |       19       |
+|     mprotect    |      12      |       12       |
+|    arch_prctl   |      1       |       1        |
+|      statfs     |      2       |       2        |
+|      access     |      7       |       7        |
+|      ioctl      |      2       |       2        |
+|      munmap     |      1       |       1        |
+|       brk       |      3       |       3        |
+|    exit_group   |      1       |       1        |
+|  rt_sigprocmask |      1       |       1        |
+|      close      |      10      |       10       |
+|    getrlimit    |      1       |       1        |
+|       open      |      8       |       8        |
+|      fstat      |      9       |       9        |
+|      execve     |      1       |       1        |
++-----------------+--------------+----------------+
